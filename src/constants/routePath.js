@@ -1,0 +1,1 @@
+// /login, /signup, /product/:id 같은 경로 문자열들 관리
