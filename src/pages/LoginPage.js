@@ -37,36 +37,50 @@ export default function LoginPage() {
 
   app.appendChild(section);
 
-  // 탭 클릭 이벤트
   const tabs = section.querySelectorAll('.tab');
-  let userType = 'BUYER'; // 기본값
+  let userType = 'BUYER';
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
       tabs.forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
       userType = tab.dataset.type;
-      console.log('현재 선택된 유형:', userType);
     });
   });
 
-  // 로그인 폼 이벤트
   const form = section.querySelector('.login-form');
   const errorMessage = section.querySelector('.error-message');
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const id = form.id.value.trim();
-    const pw = form.pw.value.trim();
 
-    if (!id || !pw) {
-      errorMessage.textContent = '아이디와 비밀번호를 모두 입력해주세요.';
+    const idInput = form.id;
+    const pwInput = form.pw;
+    const id = idInput.value.trim();
+    const pw = pwInput.value.trim();
+
+    // 🔹 Focus 처리
+    if (!id) {
+      errorMessage.textContent = '아이디를 입력해주세요.';
       errorMessage.style.display = 'block';
+      idInput.focus();
+      return;
+    }
+    if (!pw) {
+      errorMessage.textContent = '비밀번호를 입력해주세요.';
+      errorMessage.style.display = 'block';
+      pwInput.focus();
       return;
     }
 
-    // TODO: 여기서 로그인 API 요청
-    // 예시 출력
-    console.log('로그인 시도:', { id, pw, user_type: userType });
+    // 🔹 가짜 로그인 처리 (API 연동 전)
+    if (id === 'test' && pw === '1234') {
+      // 로그인 성공 시 메인 페이지로 이동
+      location.href = '#/';
+    } else {
+      errorMessage.textContent = '아이디 또는 비밀번호가 일치하지 않습니다.';
+      errorMessage.style.display = 'block';
+      pwInput.focus();
+    }
   });
 }
