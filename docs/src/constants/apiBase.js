@@ -1,0 +1,1 @@
+// API의 기본 URL (예: https://openmarket.weniv.co.kr)
