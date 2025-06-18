@@ -20,12 +20,10 @@ export default function LoginPage() {
       </div>
       <form class="login-form">
         <label>
-          <span class="input-label">아이디</span>
-          <input type="text" name="id" required />
+          <input type="text" name="id" placeholder = "아이디" required />
         </label>
         <label>
-          <span class="input-label">비밀번호</span>
-          <input type="password" name="pw" required />
+          <input type="password" name="pw" placeholder = "비밀번호" required />
         </label>
         <p class="error-message" style="display: none;">아이디 또는 비밀번호가 일치하지 않습니다.</p>
         <button type="submit" class="login-btn">로그인</button>
