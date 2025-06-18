@@ -6,20 +6,20 @@ export default function createCarousel() {
     <div class="carousel">
     <div class="slides">
       <div class="slide">
-      <img src="../src/assets/images/banner-1.png" alt="배너 1" />
+      <img src="src/assets/images/banner-1.png" alt="배너 1" />
       </div>
       <div class="slide">
-      <img src="../src/assets/images/banner-2.png" alt="배너 2" />
+      <img src="src/assets/images/banner-2.png" alt="배너 2" />
       </div>
       <div class="slide">
-      <img src="../src/assets/images/banner-3.png" alt="배너 3" />
+      <img src="src/assets/images/banner-3.png" alt="배너 3" />
       </div>
     </div>
     <button class="prev">
-      <img src="../src/assets/images/icon-left-arrow.svg" alt="">
+      <img src="src/assets/images/icon-left-arrow.svg" alt="">
     </button>
     <button class="next">
-      <img src="../src/assets/images/icon-right-arrow.svg" alt="">
+      <img src="src/assets/images/icon-right-arrow.svg" alt="">
     </button>
     <div class="dots">
       <span class="dot active"></span>
