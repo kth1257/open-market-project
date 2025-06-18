@@ -55,8 +55,8 @@ export default function LoginPage() {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const idInput = form.id;
-    const pwInput = form.pw;
+    const idInput = form.querySelector('[name="id]');
+    const pwInput = form.querySelector('[name="pw]');
     const id = idInput.value.trim();
     const pw = pwInput.value.trim();
 
