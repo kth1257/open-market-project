@@ -339,7 +339,6 @@ header {
   color: red;
 }
 
-/* 약관 */
 .terms label {
   font-size: 14px;
   color: #333;
@@ -350,7 +349,6 @@ header {
   text-decoration: underline;
 }
 
-/* 가입하기 버튼 */
 .signup-btn {
   height: 60px;
   background: var(--main-color);

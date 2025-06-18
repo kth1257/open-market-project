@@ -1,15 +1,18 @@
 // 로그인 페이지 렌더링과 이벤트 처리
-import Header from '../components/Header.js';
 
 export default function LoginPage() {
   const app = document.querySelector('.app');
   app.innerHTML = '';
-  app.appendChild(Header());
 
   const section = document.createElement('section');
   section.className = 'login-section';
 
   section.innerHTML = `
+    <h1 class="logo">
+          <a href="#/">
+            <img class="logo-img" src="/open-market-project/src/assets/images/Logo-hodu.png" alt="HODU">
+          </a>
+    </h1>
     <div class="login-container">
       <div class="login-tab">
         <button class="tab active" data-type="BUYER">구매회원 로그인</button>
@@ -17,12 +20,10 @@ export default function LoginPage() {
       </div>
       <form class="login-form">
         <label>
-          <span class="input-label">아이디</span>
-          <input type="text" name="id" required />
+          <input type="text" name="id" placeholder = "아이디" required />
         </label>
         <label>
-          <span class="input-label">비밀번호</span>
-          <input type="password" name="pw" required />
+          <input type="password" name="pw" placeholder = "비밀번호" required />
         </label>
         <p class="error-message" style="display: none;">아이디 또는 비밀번호가 일치하지 않습니다.</p>
         <button type="submit" class="login-btn">로그인</button>
@@ -54,8 +55,8 @@ export default function LoginPage() {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const idInput = form.id;
-    const pwInput = form.pw;
+    const idInput = form.querySelector('[name="id]');
+    const pwInput = form.querySelector('[name="pw]');
     const id = idInput.value.trim();
     const pw = pwInput.value.trim();
 

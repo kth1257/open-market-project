@@ -28,6 +28,9 @@ body {
 	border-style: none;
 	box-sizing: border-box;
 }
+a {
+	color: inherit;
+}
 ol, ul {
 	list-style: none;
 }
@@ -42,4 +45,10 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+button {
+	border: none;
+}
+input {
+	box-sizing: border-box;
 }
