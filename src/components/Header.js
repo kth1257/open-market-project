@@ -1,4 +1,6 @@
 export default function createHeader() {
+  const isLoggedIn = !!localStorage.getItem('token');
+  // 로컬스토리지에 토큰 값이 있는지 체크하여 true/false값으로 반환
   const header = document.createElement('header');
   header.className = 'gnb';
 
@@ -23,14 +25,23 @@ export default function createHeader() {
           <img src="../src/assets/images/icon-shopping-cart.svg" alt="" />
           장바구니
         </button>
-        <button class="btn-mypage">
+        <button class="btn-auth">
           <img src="../src/assets/images/icon-user.svg" alt="" />
-          마이페이지
+          ${ isLoggedIn ? '마이페이지' : '로그인' }
         </button>
       </nav>
       </div>
     </div>
   `;
+
+  const authBtn = header.querySelector('.btn-auth');
+  authBtn.addEventListener('click', () => {
+    if (isLoggedIn) {
+      location.href = '#/mypage'
+    } else {
+      location.href = '#/login'
+    }
+  });
 
   return header;
 }
