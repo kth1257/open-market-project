@@ -10,7 +10,7 @@ export default function LoginPage() {
   section.innerHTML = `
     <h1 class="logo">
           <a href="#/">
-            <img class="logo-img" src="/open-market-project/src/assets/images/Logo-hodu.png" alt="HODU">
+            <img class="logo-img" src="../src/assets/images/Logo-hodu.png" alt="HODU">
           </a>
     </h1>
     <div class="login-container">
