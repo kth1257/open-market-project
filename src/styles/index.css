@@ -1,3 +1,4 @@
+/* HEADER */
 header {
   width: 100%;
 }
@@ -16,11 +17,11 @@ header {
   background: none;
 }
 
-.logo {
+.gnb-logo {
   display: flex;
   align-items: center;
 }
-.logo-img {
+.gnb-logo .logo-img {
   width: 124px;
   height: 38px;
 }
@@ -35,7 +36,7 @@ header {
   width: 400px;
   height: 46px;
   border-radius: 50px;
-  border: 2px solid #21BF58;
+  border: 2px solid var(--main-color);
   display: flex;
   justify-content: space-between;
   padding: 0 22px;
@@ -75,6 +76,7 @@ header {
 }
 
 
+/* CAROUSEL */
 .carousel {
   position: relative;
   width: 100%;

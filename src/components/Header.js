@@ -7,7 +7,7 @@ export default function createHeader() {
   header.innerHTML = `
     <div class="gnb-wrap">
       <div class="gnb-left">
-        <h1 class="logo">
+        <h1 class="gnb-logo">
           <a href="#/">
             <img class="logo-img" src="../src/assets/images/Logo-hodu.png" alt="HODU">
           </a>

@@ -1,15 +1,18 @@
 // 로그인 페이지 렌더링과 이벤트 처리
-import Header from '../components/Header.js';
 
 export default function LoginPage() {
   const app = document.querySelector('.app');
   app.innerHTML = '';
-  app.appendChild(Header());
 
   const section = document.createElement('section');
   section.className = 'login-section';
 
   section.innerHTML = `
+    <h1 class="logo">
+          <a href="#/">
+            <img class="logo-img" src="../src/assets/images/Logo-hodu.png" alt="HODU">
+          </a>
+    </h1>
     <div class="login-container">
       <div class="login-tab">
         <button class="tab active" data-type="BUYER">구매회원 로그인</button>
