@@ -156,6 +156,7 @@ export default function SignupPage() {
       });
 
       const data = await res.json();
+      console.log('회원가입 응답:', data);
 
       if (res.ok) {
         alert('🎉 회원가입이 완료되었습니다!');
