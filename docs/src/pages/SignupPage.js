@@ -107,10 +107,14 @@ export default function SignupPage() {
 
   pw2.addEventListener('input', () => {
     if (pw1.value !== pw2.value) {
-      pwMessage.style.display = 'block';
+      
+      pwMessage.textContent = '비밀번호가 일치하지 않습니다.'
+      pwMessage.style.color = 'red';
     } else {
-      pwMessage.style.display = 'none';
+      pwMessage.textContent = '비밀번호가 일치합니다.';
+      pwMessage.style.color = 'green';
     }
+    pwMessage.style.display = 'block';
   });
 
   const form = section.querySelector('.signup-form');
