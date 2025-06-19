@@ -10,7 +10,7 @@ export default function SignupPage() {
   section.innerHTML = `
   <h1 class="logo">
         <a href="#/">
-          <img class="logo-img" src="../src/assets/images/Logo-hodu.png" alt="HODU">
+          <img class="logo-img" src="./src/assets/images/Logo-hodu.png" alt="HODU">
         </a>
       </h1>
       <div class="signup-container">
@@ -24,26 +24,26 @@ export default function SignupPage() {
           <div class="form-block">
             <label class="field-label" for="username">아이디</label>
             <div class="form-row">
-              <input type="text" name="username" id="username" required />
+              <input type="text" name="username" id="username">
               <button type="button" class="check-duplicate-btn">중복확인</button>
             </div>
-            <p class="id-message" style="display: none;">멋진 아이디네요 :)</p>
+            <p class="id-message"></p>
           </div>
 
           <div class="form-block">
             <label class="field-label" for="password">비밀번호</label>
-            <input type="password" name="password" id="password" required />
+            <input type="password" name="password" id="password">
           </div>
 
           <div class="form-block">
             <label class="field-label" for="password2">비밀번호 재확인</label>
-            <input type="password" name="password2" id="password2" required />
-            <p class="pw-message" style="display: none;">비밀번호가 일치하지 않습니다.</p>
+            <input type="password" name="password2" id="password2">
+            <p class="pw-message"></p>
           </div>
 
           <div class="form-block">
             <label class="field-label" for="name">이름</label>
-            <input type="text" name="name" id="name" required />
+            <input type="text" name="name" id="name">
           </div>
 
           <div class="form-block">
@@ -54,8 +54,8 @@ export default function SignupPage() {
                 <option value="011">011</option>
                 <option value="016">016</option>
               </select>
-              <input type="text" name="phone2" maxlength="4" required />
-              <input type="text" name="phone3" maxlength="4" required />
+              <input type="text" name="phone2" maxlength="4" required >
+              <input type="text" name="phone3" maxlength="4" required >
             </div>
           </div>
 
@@ -82,6 +82,59 @@ export default function SignupPage() {
       tab.classList.add('active');
       userType = tab.dataset.type;
     });
+  });
+
+  const checkBtn = section.querySelector('.check-duplicate-btn');
+  const idInput = section.querySelector('#username');
+  const idMessage = section.querySelector('.id-message');
+
+  // 임시 틀
+  checkBtn.addEventListener('click', () => {
+    const value = idInput.value.trim();
+    if (!value) {
+      idMessage.textContent = '아이디를 입력해주세요.';
+      idMessage.style.color = 'red';
+    } else {
+      idMessage.textContent = '멋진 아이디네요 :)';
+      idMessage.style.color = 'green';
+    }
+    idMessage.style.display = 'block';
+  });
+
+  const pw1 = section.querySelector('#password');
+  const pw2 = section.querySelector('#password2');
+  const pwMessage = section.querySelector('.pw-message');
+
+  pw2.addEventListener('input', () => {
+    if (pw1.value !== pw2.value) {
+      
+      pwMessage.textContent = '비밀번호가 일치하지 않습니다.'
+      pwMessage.style.color = 'red';
+    } else {
+      pwMessage.textContent = '비밀번호가 일치합니다.';
+      pwMessage.style.color = 'green';
+    }
+    pwMessage.style.display = 'block';
+  });
+
+  const form = section.querySelector('.signup-form');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    if (pw1.value !== pw2.value) {
+      alert('비밀번호가 일치하지 않습니다.');
+      pw2.focus();
+      return;
+    }
+
+    if (!section.querySelector('input[name="terms"]').checked) {
+      alert('약관에 동의해주세요.');
+      return;
+    }
+
+    alert('회원가입 완료!');
+    location.href = '#/login';
   });
   
 }
