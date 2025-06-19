@@ -119,7 +119,7 @@ export default function SignupPage() {
 
   const form = section.querySelector('.signup-form');
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     if (pw1.value !== pw2.value) {
@@ -133,8 +133,41 @@ export default function SignupPage() {
       return;
     }
 
-    alert('회원가입 완료!');
-    location.href = '#/login';
+    const username = section.querySelector('#username').value.trim();
+    const password = pw1.value.trim();
+    const name = section.querySelector('#name').value.trim();
+    const phone1 = section.querySelector('select[name="phone1"]').value;
+    const phone2 = section.querySelector('input[name="phone2"]').value.trim();
+    const phone3 = section.querySelector('input[name="phone3"]').value.trim();
+    const phone_number = phone1 + phone2 + phone3;
+
+    try {
+      const res = await fetch('https://api.wenivops.co.kr/accounts/buyer/signup/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username,
+          password,
+          name,
+          phone_number
+        })
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        alert('🎉 회원가입이 완료되었습니다!');
+        location.href = '#/login';
+      } else {
+        alert(`오류: ${Object.values(data).join('\n')}`);
+      }
+    } catch (err) {
+      alert('네트워크 에러가 발생했습니다.');
+      console.log(err);
+    }
+    
   });
   
 }
