@@ -24,7 +24,7 @@ export default function SignupPage() {
           <div class="form-block">
             <label class="field-label" for="username">아이디</label>
             <div class="form-row">
-              <input type="text" name="username" id="username" required />
+              <input type="text" name="username" id="username">
               <button type="button" class="check-duplicate-btn">중복확인</button>
             </div>
             <p class="id-message"></p>
@@ -32,18 +32,18 @@ export default function SignupPage() {
 
           <div class="form-block">
             <label class="field-label" for="password">비밀번호</label>
-            <input type="password" name="password" id="password" required />
+            <input type="password" name="password" id="password">
           </div>
 
           <div class="form-block">
             <label class="field-label" for="password2">비밀번호 재확인</label>
-            <input type="password" name="password2" id="password2" required />
+            <input type="password" name="password2" id="password2">
             <p class="pw-message"></p>
           </div>
 
           <div class="form-block">
             <label class="field-label" for="name">이름</label>
-            <input type="text" name="name" id="name" required />
+            <input type="text" name="name" id="name">
           </div>
 
           <div class="form-block">
@@ -54,8 +54,8 @@ export default function SignupPage() {
                 <option value="011">011</option>
                 <option value="016">016</option>
               </select>
-              <input type="text" name="phone2" maxlength="4" required />
-              <input type="text" name="phone3" maxlength="4" required />
+              <input type="text" name="phone2" maxlength="4" required >
+              <input type="text" name="phone3" maxlength="4" required >
             </div>
           </div>
 
