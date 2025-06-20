@@ -1,6 +1,6 @@
 // 로그인, 회원가입, 유저 정보 불러오기 등 유저 관련 기능
 export async function signupBuyer({ username, password, name, phone_number }) {
-  const res = await fetch('https://api.wenivops.co.kr/accounts/buyer/signup/', {
+  const res = await fetch('https://api.wenivops.co.kr/services/open-market/accounts/buyer/signup/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -17,8 +17,8 @@ export async function signupBuyer({ username, password, name, phone_number }) {
 export async function loginUser({ username, password }, userType = 'BUYER') {
   const url =
     userType === 'BUYER'
-      ? 'https://api.wenivops.co.kr/accounts/login/'
-      : 'https://api.wenivops.co.kr/accounts/seller/login/';
+      ? 'https://api.wenivops.co.kr/services/open-market/accounts/login/'
+      : 'https://api.wenivops.co.kr/services/open-market/accounts//seller/login/';
 
   const res = await fetch(url, {
     method: 'POST',
