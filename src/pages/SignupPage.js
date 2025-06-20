@@ -142,7 +142,7 @@ export default function SignupPage() {
     const phone_number = phone1 + phone2 + phone3;
 
     try {
-      const res = await fetch('https://api.wenivops.co.kr/services/open-market/', {
+      const res = await fetch('https://api.wenivops.co.kr/accounts/buyer/signup/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
