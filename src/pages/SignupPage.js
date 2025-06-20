@@ -150,7 +150,7 @@ export default function SignupPage() {
       alert('🎉 회원가입이 완료되었습니다!');
       location.href = '#/login';
     } catch (err) {
-      alert(`오류: ${Object.values(err).join('\n')}`);
+      alert(`오류가 발생해 가입에 실패하였습니다.`);
       console.log(err);
     }
   });

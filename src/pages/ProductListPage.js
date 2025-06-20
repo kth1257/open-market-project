@@ -1,8 +1,10 @@
 import createHeader from '../components/Header.js';
 import createCarousel from '../components/Carousel.js';
+import createProductCard from '../components/ProductCard.js';
+import { fetchProductList } from '../api/productApi.js';
 
 // 메인 상품 목록 페이지 (구매자가 보는 메인)
-export default function ProductListPage() {
+export default async function ProductListPage() {
   const app = document.querySelector('.app');
   app.innerHTML = '';
 
@@ -16,13 +18,18 @@ export default function ProductListPage() {
     <ul class="product-list"></ul>
   `;
 
-  fetch('https://api.wenivops.co.kr/services/open-market/')
-  // 요청할 주소
-  .then((response) => response.json())
-  // 앞 과정이 끝나면 than하고 응답을 받아서 json형식으로 바꿈
-  .then((data) => console.log(data));
-  // 앞 과정(응답을 받아 json으로 바꿨)했으면
+  const productList = section.querySelector('.product-list');
 
+  try {
+    const products = await fetchProductList();
+    products.forEach(product => {
+      const card = createProductCard(product);
+      productList.appendChild(card);
+    });
+  } catch (err) {
+    console.error('상품 불러오기 실패:', err);
+    productList.innerHTML = `<li>상품을 불러오지 못했습니다 😥</li>`;
+  }
 
   app.append(header, carousel, section);
 }

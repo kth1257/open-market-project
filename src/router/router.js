@@ -11,14 +11,14 @@ const routes = {
   '/signup' : SignupPage,
 };
 
-export default function router() {
+export default async function router() {
   const app = document.querySelector('.app');
   const path = location.hash.replace('#', '') || '/';
   const renderPage = routes[path];
 
    if (renderPage) {
     app.innerHTML = '';
-    renderPage();
+    await renderPage();
   } else {
     app.innerHTML = '<h1>404 - 페이지를 찾을 수 없습니다</h1>';
   }
