@@ -1,5 +1,9 @@
 // 회원가입 화면과 유효성 검사
 
+import { signupBuyer } from '../api/userApi.js';
+import { validatePasswordMatch, validateTermsAgreement } from '../utils/validator.js';
+
+
 export default function SignupPage() {
   const app = document.querySelector('.app');
   app.innerHTML = '';
@@ -122,18 +126,18 @@ export default function SignupPage() {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    if (pw1.value !== pw2.value) {
+    if (!validatePasswordMatch(pw1.value, pw2.value)) {
       alert('비밀번호가 일치하지 않습니다.');
       pw2.focus();
       return;
     }
 
-    if (!section.querySelector('input[name="terms"]').checked) {
+    if (!validateTermsAgreement(section.querySelector('input[name="terms"]'))) {
       alert('약관에 동의해주세요.');
       return;
     }
 
-    const username = section.querySelector('#username').value.trim();
+    const username = idInput.value.trim();
     const password = pw1.value.trim();
     const name = section.querySelector('#name').value.trim();
     const phone1 = section.querySelector('select[name="phone1"]').value;
@@ -142,33 +146,12 @@ export default function SignupPage() {
     const phone_number = phone1 + phone2 + phone3;
 
     try {
-      const res = await fetch('https://api.wenivops.co.kr/accounts/buyer/signup/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          username,
-          password,
-          name,
-          phone_number
-        })
-      });
-
-      const data = await res.json();
-      console.log('회원가입 응답:', data);
-
-      if (res.ok) {
-        alert('🎉 회원가입이 완료되었습니다!');
-        location.href = '#/login';
-      } else {
-        alert(`오류: ${Object.values(data).join('\n')}`);
-      }
+      const data = await signupBuyer({ username, password, name, phone_number });
+      alert('🎉 회원가입이 완료되었습니다!');
+      location.href = '#/login';
     } catch (err) {
-      alert('네트워크 에러가 발생했습니다.');
+      alert(`오류: ${Object.values(err).join('\n')}`);
       console.log(err);
     }
-    
   });
-  
 }

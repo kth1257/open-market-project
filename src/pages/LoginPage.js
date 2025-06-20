@@ -1,5 +1,8 @@
 // 로그인 페이지 렌더링과 이벤트 처리
 
+import { loginUser } from '../api/userApi.js';
+import { validateLoginInput } from '../utils/validator.js';
+
 export default function LoginPage() {
   const app = document.querySelector('.app');
   app.innerHTML = '';
@@ -51,37 +54,31 @@ export default function LoginPage() {
 
   const form = section.querySelector('.login-form');
   const errorMessage = section.querySelector('.error-message');
+  const idInput = form.querySelector('[name="id"]');
+  const pwInput = form.querySelector('[name="pw"]');
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const idInput = form.querySelector('[name="id]');
-    const pwInput = form.querySelector('[name="pw]');
     const id = idInput.value.trim();
     const pw = pwInput.value.trim();
+    const error = validateLoginInput(id, pw);
 
-    // 🔹 Focus 처리
-    if (!id) {
-      errorMessage.textContent = '아이디를 입력해주세요.';
+    if (error) {
+      errorMessage.textContent = error;
       errorMessage.style.display = 'block';
-      idInput.focus();
-      return;
-    }
-    if (!pw) {
-      errorMessage.textContent = '비밀번호를 입력해주세요.';
-      errorMessage.style.display = 'block';
-      pwInput.focus();
+      (id ? pwInput : idInput).focus();
       return;
     }
 
-    // 🔹 가짜 로그인 처리 (API 연동 전)
-    if (id === 'test' && pw === '1234') {
-      // 로그인 성공 시 메인 페이지로 이동
+    try {
+      const data = await loginUser({ username: id, password: pw }, userType);
+      localStorage.setItem('token', data.access_token); // 필요 시 저장
       location.href = '#/';
-    } else {
-      errorMessage.textContent = '아이디 또는 비밀번호가 일치하지 않습니다.';
+    } catch (err) {
+      errorMessage.textContent =
+        err?.detail || '아이디 또는 비밀번호가 일치하지 않습니다.';
       errorMessage.style.display = 'block';
-      pwInput.focus();
     }
   });
 }
