@@ -3,7 +3,7 @@ export function validatePasswordMatch(pw1, pw2) {
   return pw1 === pw2;
 }
 
-export function validateRequiredTerms(checkbox) {
+export function validateTermsAgreement(checkbox) {
   return checkbox.checked;
 }
 
