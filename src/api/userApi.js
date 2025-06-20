@@ -9,6 +9,9 @@ export async function signupBuyer({ username, password, name, phone_number }) {
   });
 
   const data = await res.json();
+
+  console.log('📩 [회원가입 응답]', res.status, data);
+
   if (!res.ok) throw data;
   return data;
 }
@@ -28,6 +31,8 @@ export async function loginUser({ username, password }, userType = 'BUYER') {
   });
 
   const data = await res.json();
+
+  console.log('🔐 [로그인 응답]', res.status, data);
 
   if (!res.ok) throw data;
   return data; // { user_type, access_token, ... }
