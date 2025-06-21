@@ -7,4 +7,3 @@ export const ENDPOINTS = {
   BUYER_SIGNUP: '/accounts/buyer/signup/',
   SELLER_SIGNUP: '/accounts/seller/signup/',
 };
-// 임시 코드

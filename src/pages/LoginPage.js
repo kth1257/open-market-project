@@ -2,6 +2,7 @@
 
 import { loginUser } from '../api/userApi.js';
 import { validateLoginInput } from '../utils/validator.js';
+import { setUserSession } from '../utils/session.js';
 
 export default function LoginPage() {
   const app = document.querySelector('.app');
@@ -73,7 +74,14 @@ export default function LoginPage() {
 
     try {
       const data = await loginUser({ username: id, password: pw }, userType);
-      localStorage.setItem('token', data.access_token); // 필요 시 저장
+
+      setUserSession({
+        username: data.user.username,
+        access: data.access,
+        refresh: data.refresh,
+        user_type: data.user.user_type
+      });
+
       location.href = '#/';
     } catch (err) {
       errorMessage.textContent =
