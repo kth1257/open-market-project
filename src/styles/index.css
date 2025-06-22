@@ -304,6 +304,9 @@ strong {
 
 .signup-container {
   width: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .signup-tab {
@@ -337,6 +340,10 @@ strong {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  margin-bottom: 34px;
+}
+.signup-form input[type="text"] {
+  width: 100%;
 }
 
 .form-block {
@@ -352,8 +359,13 @@ strong {
 
 .form-row {
   display: flex;
-  gap: 10px;
   align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.form-row input {
+  flex: 1;
 }
 
 .signup-form input,
@@ -395,6 +407,22 @@ strong {
   color: red;
 }
 
+.terms-section {
+  width: 480px;
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  color: var(--sub-color);
+}
+
+.terms-checkbox a {
+  font-weight: bold;
+}
+
+.terms-checkbox {
+  margin-bottom: 34px;
+}
+
 .terms label {
   font-size: 14px;
   color: #333;
@@ -406,6 +434,7 @@ strong {
 }
 
 .signup-btn {
+  width: 480px;
   height: 60px;
   background: var(--main-color);
   color: white;

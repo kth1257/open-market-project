@@ -63,15 +63,18 @@ export default function SignupPage() {
             </div>
           </div>
 
-          <div class="form-block terms">
-            <label>
-              <input type="checkbox" name="terms" />
-              호두샵의 <a href="#">이용약관</a> 및 <a href="#">개인정보처리방침</a>에 동의합니다.
+        </form>
+
+        <div class="terms-section">
+          <div class="terms-checkbox">
+            <input type="checkbox" id="terms-checkbox" />
+            <label for="terms-checkbox">
+              호두샵의 <a href="#">이용약관</a> 및 <a href="#">개인정보처리방침</a>에 대한 내용을 확인하였고 동의합니다.
             </label>
           </div>
+        </div>
 
-          <button type="submit" class="signup-btn">가입하기</button>
-        </form>
+        <button type="submit" class="signup-btn">가입하기</button>
       </div>
   `;
 
@@ -121,9 +124,9 @@ export default function SignupPage() {
     pwMessage.style.display = 'block';
   });
 
-  const form = section.querySelector('.signup-form');
+  const signupBtn = section.querySelector('.signup-btn');
 
-  form.addEventListener('submit', async (e) => {
+  signupBtn.addEventListener('click', async (e) => {
     e.preventDefault();
 
     if (!validatePasswordMatch(pw1.value, pw2.value)) {
@@ -132,7 +135,7 @@ export default function SignupPage() {
       return;
     }
 
-    if (!validateTermsAgreement(section.querySelector('input[name="terms"]'))) {
+    if (!validateTermsAgreement(section.querySelector('#terms-checkbox'))) {
       alert('약관에 동의해주세요.');
       return;
     }
