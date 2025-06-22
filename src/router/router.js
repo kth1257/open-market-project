@@ -4,6 +4,7 @@
 import LoginPage from '../pages/LoginPage.js';
 import SignupPage from '../pages/SignupPage.js';
 import ProductsListPage from '../pages/ProductListPage.js';
+import ProductDetailPage from '../pages/ProductDetailPage.js';
 
 const routes = {
   '/' : ProductsListPage,
@@ -14,6 +15,13 @@ const routes = {
 export default async function router() {
   const app = document.querySelector('.app');
   const path = location.hash.replace('#', '') || '/';
+
+  if (path.startsWith('/product/')) {
+    const id = path.split('/')[2];
+    await ProductDetailPage(id);
+    return;
+  }
+
   const renderPage = routes[path];
 
    if (renderPage) {

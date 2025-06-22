@@ -9,5 +9,10 @@ export default function createProductCard(product) {
       <p>${product.price.toLocaleString()}원</p>
     </div>
 `;
+
+  li.addEventListener('click', () => {
+      location.href = `#/product/${product.id}`;
+  });
+
   return li;
 }
