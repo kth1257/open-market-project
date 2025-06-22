@@ -2,6 +2,7 @@ import createHeader from '../components/Header.js';
 import createCarousel from '../components/Carousel.js';
 import createProductCard from '../components/ProductCard.js';
 import { fetchProductList } from '../api/productApi.js';
+import createFooter from '../components/Footer.js';
 
 // 메인 상품 목록 페이지 (구매자가 보는 메인)
 export default async function ProductListPage() {
@@ -31,5 +32,5 @@ export default async function ProductListPage() {
     productList.innerHTML = `<li>상품을 불러오지 못했습니다 😥</li>`;
   }
 
-  app.append(header, carousel, section);
+  app.append(header, carousel, section, createFooter());
 }
