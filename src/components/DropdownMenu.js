@@ -10,7 +10,7 @@ export default function createDropdownMenu() {
   if (user && user.access) {
     dropdown.innerHTML = `
       <li><a href="#/mypage">마이페이지</a></li>
-      <li><button class="btn-logout">로그아웃</button></li>
+      <li><a class="btn-logout">로그아웃</a></li>
     `;
 
     dropdown.querySelector('.btn-logout').addEventListener('click', () => {

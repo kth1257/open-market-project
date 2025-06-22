@@ -14,6 +14,7 @@
 /* HEADER */
 header {
   width: 100%;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.10);
 }
 
 .gnb-wrap {
@@ -24,6 +25,7 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  
 }
 .gnb-wrap button {
   border: none;
@@ -153,11 +155,11 @@ header {
   border-radius: 5px;
 }
 
-.dropdown-menu .btn-logout {
+/* .dropdown-menu .btn-logout {
   border: 1px solid #444;
   border-radius: 6px;
   margin-top: 8px;
-}
+} */
 
 
 /* CAROUSEL */
@@ -490,25 +492,263 @@ header {
   margin-bottom: 16px;
 }
 
-.product-info {
+.product-card .product-card-info {
   display: flex;
   flex-direction: column;
   gap: 6px;
   margin-bottom: 16px;
 }
 
-.product-info p:first-of-type {
+.product-card-info p:first-of-type {
   font-size: 16px;
   color: #888;
 }
 
-.product-info h3 {
+.product-card-info h3 {
   font-size: 18px;
   color: #000;
 }
 
-.product-info p:last-of-type {
+.product-card-info p:last-of-type {
   font-size: 24px;
   font-weight: bold;
   color: #000;
+}
+
+
+
+/* PRODUCT-DETAIL-PAGE */
+.product-detail-page {
+  max-width: 1280px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+.detail-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 60px;
+  margin-bottom: 140px;
+}
+
+/* 이미지 */
+.product-image {
+  width: 520px;
+  height: 520px;
+  object-fit: cover;
+  background: #f5f5f5;
+  border-radius: 6px;
+}
+
+/* 오른쪽 상품 정보 */
+.product-detail-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.product-detail-info .seller-name {
+  font-size: 14px;
+  color: var(--sub-color);
+}
+
+.product-detail-info .product-name {
+  font-size: 36px;
+}
+
+.product-price {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 138px;
+}
+
+.delivery-info {
+  font-size: 16px;
+  color: #999;
+  font-weight: normal;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* 수량 */
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.btn-qty {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #ccc;
+  background: white;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.qty-value {
+  font-size: 16px;
+  min-width: 32px;
+  text-align: center;
+}
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0 16px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+}
+
+.summary-right {
+  font-size: 16px;
+  color: #000;
+}
+
+.summary-quantity {
+  color: var(--main-color);
+}
+
+.total-price {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--main-color);
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-buy {
+  flex: 1;
+  height: 56px;
+  background: var(--main-color);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-cart {
+  flex: 1;
+  height: 56px;
+  background: #555;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.tab-menu {
+  display: flex;
+  justify-content: space-around;
+  font-size: 14px;
+  color: #999;
+  position: relative;
+}
+
+.tab-menu .tab {
+  flex: 1;
+  padding: 20px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  color: #999;
+  position: relative;
+}
+
+.tab-menu .tab.active {
+  color: var(--main-color);
+  font-weight: bold;
+}
+
+.tab-menu .tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--main-color);
+  border-radius: 2px;
+}
+
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 360px;
+  height: 200px;
+  background: white;
+  position: relative;
+  text-align: center;
+  border: 1px solid var(--border-color);
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-message {
+  white-space: pre-line;
+  text-align: center;
+  line-height: 1.6;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.modal-actions button {
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+}
+
+.modal-cancel {
+  background: white;
+  color: var(--sub-color);
+  border: 1px solid var(--border-color);
+}
+
+.modal-confirm {
+  background: var(--main-color, #00c73c);
+  color: white;
 }
