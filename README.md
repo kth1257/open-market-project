@@ -52,22 +52,36 @@
 
 src/
 ├── api/            # API 함수
-├── assets/         # 이미지, 아이콘 등
+├── assets/
+│   ├── images/     # 정적 이미지 파일
+│   └── screens/    # README에 쓰일 화면 캡처 이미지
 ├── components/     # Header, Footer, Carousel 등
 ├── constants/      # 공통 상수
 ├── pages/          # 각 페이지 JS
 ├── router/         # SPA 라우터
 ├── styles/         # CSS
-└── utils/          # 세션, 인증 유틸 함수
+└── utils/          # 세션 유틸 함수
 
-````
+```
+
 ---
 
 ## 👀 화면 미리 보기
 
-| 메인                                     | 상세 페이지                                     | 로그인 필요 모달                                |
-| -------------------------------------- | ------------------------------------------ | ---------------------------------------- |
-| ![main](./src/assets/screens/main.png) | ![detail](./src/assets/screens/detail.png) | ![modal](./src/assets/screens/modal.png) |
+### 🔸 메인 페이지
+![main](./src/assets/screens/main.png)
+
+### 🔸 로그인 페이지
+![login](./src/assets/screens/login.png)
+
+### 🔸 회원가입 페이지
+![signup](./src/assets/screens/signup.png)
+
+### 🔸 상품 상세 페이지
+![detail](./src/assets/screens/detail.png)
+
+### 🔸 로그인 필요 시 모달
+![modal](./src/assets/screens/modal.png)
 
 ---
 
@@ -75,7 +89,7 @@ src/
 
 **김태훈 (Taehun Kim)**
 
-* GitHub: [@kth1257](https://github.com/kth1257)
-* Velog: [velog.io/@ase777](https://velog.io/@ase777)
+- GitHub: [@kth1257](https://github.com/kth1257)
+- Velog: [velog.io/@ase777](https://velog.io/@ase777)
 
 ---
