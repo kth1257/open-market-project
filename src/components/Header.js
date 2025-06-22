@@ -1,5 +1,6 @@
 import { isLoggedIn } from "../utils/session.js";
 import createDropdownMenu from "./DropdownMenu.js";
+
 export default function createHeader() {
   const loggedIn = isLoggedIn();
   // 로컬스토리지에 토큰 값이 있는지 체크하여 true/false값으로 반환
@@ -41,26 +42,28 @@ export default function createHeader() {
   const dropdownWrap = header.querySelector('.dropdown-wrap');
   const authBtn = header.querySelector('.btn-auth');
 
-  authBtn.addEventListener('click', () => {
+  authBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
     const existingMenu = dropdownWrap.querySelector('.dropdown-menu');
+
     if (existingMenu) {
-      existingMenu.remove(); // 이미 있으면 제거 (toggle)
+      existingMenu.remove(); // 이미 있으면 제거
       return;
     }
 
     const menu = createDropdownMenu(); // 새 메뉴 생성
     dropdownWrap.appendChild(menu);
+
+    const handleClickOutside = (event) => {
+      if (!dropdownWrap.contains(event.target)) {
+        menu.remove();
+        document.removeEventListener('click', handleClickOutside); // 한번만 실행되도록 제거
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
   });
-
-
-  // const authBtn = header.querySelector('.btn-auth');
-  // authBtn.addEventListener('click', () => {
-  //   if (loggedIn) {
-  //     location.href = '#/mypage'
-  //   } else {
-  //     location.href = '#/login'
-  //   }
-  // });
+  
 
   return header;
 }
