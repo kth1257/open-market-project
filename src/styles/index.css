@@ -778,6 +778,66 @@ strong {
   border-radius: 2px;
 }
 
+
+/* NOT-FOUND-PAGE */
+.not-found-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 20px;
+}
+
+.not-found-container {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  max-width: 900px;
+  width: 100%;
+}
+
+.not-found-icon {
+  width: 300px;
+  max-width: 100%;
+}
+
+.not-found-text h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.not-found-text p {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 24px;
+}
+
+.not-found-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.not-found-buttons .btn {
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+
+.not-found-buttons .btn-main {
+  background: var(--main-color);
+  color: white;
+}
+
+.not-found-buttons .btn-sub {
+  background: white;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+
 /* MODAL */
 .modal-overlay {
   position: fixed;

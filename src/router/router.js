@@ -5,6 +5,7 @@ import LoginPage from '../pages/LoginPage.js';
 import SignupPage from '../pages/SignupPage.js';
 import ProductsListPage from '../pages/ProductListPage.js';
 import ProductDetailPage from '../pages/ProductDetailPage.js';
+import NotFoundPage from '../pages/NotFoundPage.js'
 
 const routes = {
   '/' : ProductsListPage,
@@ -28,6 +29,7 @@ export default async function router() {
     app.innerHTML = '';
     await renderPage();
   } else {
-    app.innerHTML = '<h1>404 - 페이지를 찾을 수 없습니다</h1>';
+    app.innerHTML = '';
+  app.appendChild(NotFoundPage());
   }
 }
