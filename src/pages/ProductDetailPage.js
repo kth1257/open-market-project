@@ -3,13 +3,24 @@ import createHeader from '../components/Header.js';
 import { fetchProductDetail } from '../api/productApi.js';
 import { isLoggedIn } from '../utils/session.js';
 import createModal from '../components/Modal.js';
+import NotFoundPage from './NotFoundPage.js';
 
 export default async function ProductDetailPage(id) {
   const app = document.querySelector('.app');
   app.innerHTML = '';
 
   const header = createHeader();
-  const product = await fetchProductDetail(id); // 상품 데이터 불러오기
+  let product;
+  try {
+  product = await fetchProductDetail(id);
+} catch (err) {
+  console.error('❗ 상품을 불러오지 못했습니다:', err);
+
+  const notFound = NotFoundPage();
+  app.appendChild(notFound);
+
+  return;
+}
 
   const section = document.createElement('section');
   section.className = 'product-detail-page';
